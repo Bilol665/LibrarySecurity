@@ -7,10 +7,11 @@ import lombok.Setter;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
 @Setter
-public class RegisterDto {
-    private String name;
-    private String username;
-    private String password;
+@Getter
+public class BookCreateDto {
+    private String title;
+    private String author;
+    private Double price;
+    private Integer pages;
 }

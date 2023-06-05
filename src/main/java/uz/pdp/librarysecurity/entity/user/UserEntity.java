@@ -22,16 +22,19 @@ import java.util.List;
 @Setter
 @Getter
 public class UserEntity extends BaseEntity implements UserDetails {
+    private String name;
     private String username;
     private String password;
     @Enumerated(EnumType.STRING)
     private List<UserRole> userRoles;
+    private Boolean hasBlocked;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
+        String ROLE = "ROLE_";
         List<SimpleGrantedAuthority> authorities = new ArrayList<>();
         userRoles.forEach((role) -> {
-            authorities.add(new SimpleGrantedAuthority(role.name()));
+            authorities.add(new SimpleGrantedAuthority(ROLE + role.name()));
         });
         return authorities;
     }
